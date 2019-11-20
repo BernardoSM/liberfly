@@ -1,0 +1,14 @@
+# Node_modules and dist environment
+dist/**/*
+node_modules/**/*
+
+# OSX
+*.DS_Store
+._*
+[Tt]humbs.db
+
+# Windows
+_notes
+
+# gulp
+.gulp/**/*

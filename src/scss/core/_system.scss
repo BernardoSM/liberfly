@@ -1,0 +1,151 @@
+body {
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: $black-secondary;
+}
+
+#menu {
+	width: 300px;
+	height: 100vh;
+	background: #2f3640;
+	position: fixed;
+	right: 0;
+
+	.menu-profile {
+		text-align: center;
+
+		img {
+			margin: 0 auto;
+		}
+	}
+
+	.menu-links {
+
+		a {
+			display: block;
+			width: 100%;
+			padding: 12px;
+			padding-left: 60px;
+			font-size: 16px;
+			position: relative;
+
+			i {
+				font-size: 20px;
+				position: absolute;
+				top: 13px;
+    			left: 18px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+			}
+
+			&:hover {
+				color: $white;
+				background: #353b48;
+				i {
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+#reunioes {
+	width: 100vw;
+	padding-right: 300px;
+
+	.col-xl-3 {
+		padding-top: 15px;
+	}
+
+	.reunioes-card {
+		padding: 15px;
+		width: 100%;
+		height: 300px;
+		background: rgb(220,221,225);
+		background: -moz-linear-gradient(142deg, rgba(220,221,225,1) 0%, rgba(113,128,147,1) 100%);
+		background: -webkit-linear-gradient(142deg, rgba(220,221,225,1) 0%, rgba(113,128,147,1) 100%);
+		background: linear-gradient(142deg, rgba(220,221,225,1) 0%, rgba(113,128,147,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dcdde1",endColorstr="#718093",GradientType=1);
+		border-radius: 10px;
+
+		&.active {
+			background: #44bd32;		
+		}
+
+		&.cancelada {
+			background: #c23616;
+		}
+
+		.reunioes-card__header {
+			display: flex;
+			justify-content: space-between;
+
+			.circle {
+				width: 35px;
+				height: 35px;
+				border-radius: 50%;
+				background: #f5f6fa;
+				text-align: center;
+				color: #2f3640;
+				font-size: 22px;
+				font-weight: $bold;
+			}
+
+			.menu-options {
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				border-radius: 50%;
+				transition: 0.2s;
+				position: relative;
+
+				i {
+					color: $white;
+					font-size: 22px;
+    				padding-top: 4px;
+				}
+
+				&:hover {
+					background: $black;
+					cursor: pointer;
+					transition: 0.2s;
+
+					i {
+						color: $white;
+					}
+				}
+			}
+		}
+
+		.reunioes-card__body {
+			text-align: center;
+			padding-top: 16px;
+			height: 100%;
+			position: relative;
+
+			.description {
+				font-size: 16px;
+				font-weight: $semibold;
+				text-transform: uppercase;
+			}
+
+			.date {
+				position: absolute;
+				bottom: 24px;
+				display: block;
+				width: 100%;
+
+				.day {
+					font-size: 42px;
+					font-weight: $bold;
+				}
+
+				.hour {
+					font-size: 32px;
+				}
+			}
+		}
+	}
+}

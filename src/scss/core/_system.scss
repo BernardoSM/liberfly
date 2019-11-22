@@ -1,0 +1,326 @@
+body {
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.canvas {
+	width: 100vw;
+	height: 100vh;
+	background: $pink;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	.canvas-content {
+		display: flex;
+		flex-direction: column;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background: $pink;
+		padding-bottom: 63px;
+	}
+}
+
+#menu {
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 9px;
+	width: 100%;
+	
+
+	.menu-content {
+		width: 207px;
+		height: 45px;
+		background: $black;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		border-radius: 35px;
+		margin: 0 auto;
+
+		.menu-content-item {
+			color: $pink;
+			cursor: pointer;
+
+			&.active {
+				color: $white;
+			}
+
+			i {
+				font-size: 25px;
+			}
+
+			&.new {
+				display: block;
+			}
+		}
+	}
+}
+
+.meetings {
+	display: block;
+	font-family: $font;
+
+	h3 {
+		font-style: normal;
+		font-weight: $bold;
+		font-size: 24px;
+		line-height: 29px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding-left: 25px;
+		padding-top: 20px;
+
+		color: $black;
+	}
+
+	.meetings-swiper {
+		height: 315px;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		overflow-y: hidden;
+		overflow-x: auto;
+
+		&::-webkit-scrollbar-track {
+			background-color: $pink-secondary;
+		}
+
+		&::-webkit-scrollbar {
+			height: 10px;
+			background-color: $pink-secondary;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $black;
+		}
+
+		.meetings-swiper-card {
+			height: 100%;
+			max-height: 278px;
+			width: 206px;
+			min-width: 206px;
+			background: $white;
+			border-radius: 20px;
+			position: relative;
+			box-shadow: 2px 2px 5px rgba(154, 147, 148, 0.33);
+			margin-left: 15px;
+
+			.meetings-swiper-card__img {
+				width: 100%;
+				height: 147px;
+				position: relative;
+
+				.local {
+					display: block;
+					position: absolute;
+				    left: 0;
+				    top: 0;
+				    width: 100%;
+				    height: 100%;
+				    object-fit: cover;
+				    object-position: center center;
+				    display: block;
+				    border-top-left-radius: 20px;
+				    border-top-right-radius: 20px;
+				}
+
+				.over {
+					display: block;
+					position: absolute;
+				    left: 0;
+				    top: 0;
+				    width: 100%;
+				    height: 100%;
+				    border-top-left-radius: 20px;
+				    border-top-right-radius: 20px;
+				}
+
+				.wave {
+					position: absolute;
+				    left: 0;
+				    bottom: -1px;
+				    width: 100%;
+				}
+
+				.cancel {
+					font-style: normal;
+					font-weight: $extrabold;
+					font-size: 9px;
+					line-height: 11px;
+					letter-spacing: 0.1em;
+					color: $red;
+					position: absolute;
+					top: 9px;
+					right: 14px;
+					text-transform: uppercase;
+					transition: 0.2s;
+
+					&:hover {
+						cursor: pointer;
+						color: $red-secondary;
+						transition: 0.2s;
+					}
+				}
+			}
+
+			.meetings-swiper-card__info {
+				width: 100%;
+				text-align: center;
+				text-transform: uppercase;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+
+				.hour {
+					font-style: normal;
+					font-weight: $extralight;
+					font-size: 34px;
+					line-height: 59px;
+					color: $black;
+					margin-bottom: 19px;
+				}
+
+				.room {
+					font-style: normal;
+					font-weight: $semibold;
+					font-size: 14px;
+					line-height: 17px;
+					color: $black;
+					margin-bottom: 7px;
+				}
+
+				.day {
+					font-style: normal;
+					font-weight: $medium;
+					font-size: 9px;
+					line-height: 11px;
+					text-align: center;
+					color: $black;
+					margin-bottom: 18px;
+				}
+			}
+		}
+	}
+}
+
+.new {
+	display: none;
+	font-family: $font;
+	color: $black;
+
+	h3 {
+		font-style: normal;
+		font-weight: $bold;
+		font-size: 24px;
+		line-height: 29px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $bold;
+		text-align: center;
+		padding-top: 35px;
+		padding-bottom: 81px;
+	}
+
+	.form-control {
+		background: $pink;
+		border: 2px solid $black;
+		box-sizing: border-box;
+		border-radius: 10px;
+		height: 56px;
+		margin-bottom: 26px;
+		padding-left: 18px;
+		font-style: normal;
+		font-weight: $medium;
+		font-size: 18px;
+		line-height: 29px;
+		font-family: $font;
+		color: $black-hover;
+
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
+
+	.new-form {
+		max-width: 630px;
+		width: 100%;
+		margin: 0 auto;
+
+		.new-form__text {
+			position: relative;
+
+			label {
+				pointer-events: none;
+				position: absolute;
+				top: 14px;
+				left: 19px;
+				font-style: normal;
+				font-weight: $medium;
+				font-size: 18px;
+				line-height: 29px;
+				letter-spacing: 0.1em;
+				background: $pink;
+				display: block;
+				transition: 0.1s;
+
+				&.focus {
+					text-transform: uppercase;
+					top: -9px;
+					left: 24px;
+					font-weight: $semibold;
+					font-size: 12px;
+					line-height: 22px;
+					padding-left: 5px;
+					padding-right: 5px;
+					transition: 0.1s;
+				}
+			}
+		}
+
+		.new-form__date {
+			position: relative;
+
+			label {
+				pointer-events: none;
+				text-transform: uppercase;
+				position: absolute;
+				top: -9px;
+				left: 24px;
+				font-style: normal;
+				font-weight: $semibold;
+				font-size: 12px;
+				line-height: 22px;
+				letter-spacing: 0.1em;
+				background: $pink;
+				display: block;
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+		}
+
+		.btn-primary {
+			background: $black;
+			border: 2px solid $black;
+			box-sizing: border-box;
+			border-radius: 10px;
+			width: 100%;
+			height: 56px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-weight: $semibold;
+			font-size: 18px;
+			line-height: 29px;
+			letter-spacing: 0.1em;
+			color: $pink;
+			transition: 0.2s;
+
+			&:hover {
+				background: $black-hover;
+				border: 2px solid $black-hover;
+				transition: 0.2s;
+			}
+		}
+	}
+}

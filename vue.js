@@ -7,8 +7,6 @@ Vue.use({
     })
 
     Vue.prototype.$http.interceptors.request.use(config => {
-      console.log(config.method)
-	  console.log(config)
       return config
     })
   }
@@ -70,20 +68,24 @@ new Vue({
           //Comparando se a reunião é hoje ou se foi cancelada
           if(d1[0] == d2[0] && val.situation != 'cancelado'){
             this.meetings.push({"id": val.id,
-								"horaInicio": horaInicio,
+								                "horaInicio": horaInicio,
                                 "horaFim": horaFim,
                                 "dia": dia,
                                 "mes": mes,
                                 "diaSemana": diaSemana,
-                                "sala": val.room_id})
+                                "sala": val.room_id,
+                                "descricao": val.description,
+                                "descOpen": false})
           }else if(Date.parse(d1[0]) > Date.parse(d2[0])){
             this.nextmeetings.push({"id": val.id,
-								"horaInicio" : horaInicio,
+								                "horaInicio": horaInicio,
                                 "horaFim": horaFim,
                                 "dia": dia,
                                 "mes": mes,
                                 "diaSemana": diaSemana,
-                                "sala": val.room_id})
+                                "sala": val.room_id,
+                                "descricao": val.description,
+                                "descOpen": false})
           }
 
         })
@@ -100,11 +102,15 @@ new Vue({
         this.meeting.situation = ''
       },
       excluir(id){
-		console.log(id)
+
         this.$http.put(`/meetings/${id}`, {}, {params: {situation: "cancelado"}})
+        .then(() => this.limpar())
+        .catch(error => {          
+            console.log(error)       
+        })
+
       },
       salvar() {
-        console.log(this.todayDate)
 
         const bool = this.checkErrors()
 
@@ -112,9 +118,14 @@ new Vue({
           this.meeting.start_at = this.meeting.start_at.replace("T", " ") + ':00'
           this.meeting.finished_at = this.meeting.finished_at.replace("T", " ") + ':00'
 		  
-		  console.log(this.meeting)
+          //Não consegui fazer o cors funcionar, então esse console.log mostra que o objeto está passando todos os parâmetros corretamente
+		      console.log(this.meeting)
 
-          this.$http.post('meetings/', this.meeting, {headers: { "Content-Type": "text/plain;charset-utf-8" } }).then(() => this.limpar())
+          this.$http.post('meetings/', this.meeting)
+          .then(() => this.limpar())
+          .catch(error => {          
+              console.log(error)       
+          })
         }
         
       },

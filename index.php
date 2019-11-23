@@ -1,3 +1,9 @@
+<?php 
+header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+ ?>
+
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -49,6 +55,7 @@
 								<img class="local" src="dist/img/coliseum.png" alt="Coliseu">
 								<img class="over" src="dist/img/shadow.png" alt="Imagem de sobreposição">
 								<img class="wave" src="dist/img/wave.png" alt="Ondas">
+								<i class="fas fa-chevron-circle-up"></i>
 								<div class="cancel" @click="excluir(meeting.id)">
 									Cancelar
 								</div>
@@ -76,10 +83,14 @@
 							<div class="meetings-swiper-card__img">
 								<img class="local" src="dist/img/es.jpg" alt="Espirito Santo">
 								<img class="over" src="dist/img/shadow.png" alt="Imagem de sobreposição">
-								<img class="wave" src="dist/img/wave.png" alt="Ondas">
 								<div class="cancel" @click="excluir(meeting.id)">
 									Cancelar
 								</div>
+								<div class="description" :class="{opened: meeting.descOpen}">
+									{{meeting.descricao}}
+								</div>
+								<img class="wave" src="dist/img/wave.png" alt="Ondas">
+								<i class="fas fa-chevron-circle-up" :class="{opened: meeting.descOpen}" @click="meeting.descOpen = !meeting.descOpen"></i>
 							</div>
 							<div class="meetings-swiper-card__info">
 								<div class="hour">

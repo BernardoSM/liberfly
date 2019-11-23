@@ -1,5 +1,23 @@
-# Core
-> Template para inicialização de um projeto front-end.
+# Desafio Liberfly
+> Muito obrigado por me dar uma oportunidade de demonstrar meus conhecimentos
+
+## Figma
+- Link para visualizar o protótipo do projeto: [figma](https://www.figma.com/file/svuARpZ7IrYeYItQltUS1T/Teste?node-id=0%3A1)
+
+## Requisitos
+1. Não se preocupe com autenticação de usuário, essa funcionalidade não será necessária neste projeto.
+2. Todos os campos do formulário são obrigatórios, uma mensagem de erro deve ser retornada ao usuário caso algum esteja em branco.
+3. Trate e-mails e datas inválidas exibindo uma mensagem de erro para o usuário.
+4. Trate descrições muito curtas exibindo uma mensagem de erro para o usuário.
+5. O front-end precisa ser responsivo e apresentar uma boa visualização e navegação no mobile.
+6. O front-end deve interagir com a nossa Web API.
+
+- Observação: No requisito número 6 eu fiz todos os métodos solicitados (get, post e put), porém o post e o put deu esse problema no CORS que não consegui resolver
+
+> Post: Access to XMLHttpRequest at 'https://desafio.liberfly.com.br/api/meetings/' from origin 'http://localhost' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: Redirect is not allowed for a preflight request.
+
+> Put: axios.min.js:8 OPTIONS https://desafio.liberfly.com.br/api/meetings/39?situation=cancelado 405 (Method Not Allowed). localhost/:1 Access to XMLHttpRequest at 'https://desafio.liberfly.com.br/api/meetings/39?situation=cancelado' from origin 'http://localhost' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
 
 ## Configurações
 
@@ -33,11 +51,16 @@
 
 Contém todas as variáveis, desde tamanhos de fonte até cores, para facilitar o tempo das funções.
 
+#### _system.scss
+
+Contém todo o css do site.
+
 ## Plugins e frameworks
-Nós incluímos o usual aqui, que comumente utilizamos para agilizar os processos.
+Plugins que utilizei para agilizar o processo:
 - [bootstrap 4.3.1](https://getbootstrap.com/)
-- [Swiper 5.2.0](https://idangero.us/swiper/)
-- [Lightbox 1.6.12](http://sachinchoolur.github.io/lightGallery/)
+- [jQuery 3.4.1](https://jquery.com/download/)
+- [Vue 2.6.10](https://br.vuejs.org/v2/guide/installation.html)
+- [Axios ^0.18.1](https://github.com/axios/axios)
 - [Font Awesome 5.8.1](https://fontawesome.com/)
 
 Todos estes itens estão sendo inseridos via gulp, gerando os arquivos `alldep.css` e `alldep.js` para serem indexados ao html.
@@ -45,4 +68,4 @@ Todos estes itens estão sendo inseridos via gulp, gerando os arquivos `alldep.c
 
 ## Tipografia
 
-Por padrão a fonte inicial utilizada é a **OpenSans** ([link aqui](https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans)) e se encontra em `src/webfonts`. Para utilizar outra fonte, basta substituir os arquivos na pasta
+Por padrão a fonte inicial utilizada é a **Montserrat** ([link aqui](https://fonts.google.com/specimen/Montserrat)) e se encontra em `src/webfonts`. Para utilizar outra fonte, basta substituir os arquivos na pasta

@@ -173,8 +173,8 @@ body {
 
 				.hour {
 					font-style: normal;
-					font-weight: $extralight;
-					font-size: 34px;
+					font-weight: $medium;
+					font-size: 30px;
 					line-height: 59px;
 					color: $black;
 					margin-bottom: 19px;
@@ -217,8 +217,8 @@ body {
 		text-transform: uppercase;
 		color: $bold;
 		text-align: center;
-		padding-top: 35px;
-		padding-bottom: 81px;
+		padding-top: 16px;
+		padding-bottom: 16px;
 	}
 
 	.form-control {
@@ -246,6 +246,16 @@ body {
 		max-width: 630px;
 		width: 100%;
 		margin: 0 auto;
+
+		.error {
+			pointer-events: none;
+			position: absolute;
+			color: $red;
+			font-weight: $semibold;
+			font-size: 14px;
+			right: 10px;
+			top: 17px;
+		}
 
 		.new-form__text {
 			position: relative;

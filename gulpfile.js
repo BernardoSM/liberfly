@@ -93,7 +93,8 @@ gulp.task('jsdep', function() {
        'node_modules/swiper/js/swiper.min.js',
         'node_modules/lightgallery/dist/js/lightgallery.min.js',
         'node_modules/axios/dist/axios.min.js',
-        'node_modules/vue/dist/vue.min.js'])
+        'node_modules/vue/dist/vue.min.js',
+        'node_modules/moment/min/moment-with-locales.min.js'])
     .pipe(sourcemaps.init())
     .pipe(concat('alldep.js'))
     .pipe(rename({suffix: '.min'}))

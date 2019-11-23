@@ -49,19 +49,19 @@
 								<img class="local" src="dist/img/coliseum.png" alt="Coliseu">
 								<img class="over" src="dist/img/shadow.png" alt="Imagem de sobreposição">
 								<img class="wave" src="dist/img/wave.png" alt="Ondas">
-								<div class="cancel">
+								<div class="cancel" @click="excluir(id)">
 									Cancelar
 								</div>
 							</div>
 							<div class="meetings-swiper-card__info">
 								<div class="hour">
-									{{meeting.start_at}} - {{meeting.finished_at}}
+									{{meeting.horaInicio}} - {{meeting.horaFim}}
 								</div>
 								<div class="room">
-									Sala {{meeting.room_id}}
+									Sala {{meeting.sala}}
 								</div>
 								<div class="day">
-									SEGUNDA-FEIRA | 28 DE JULHO
+									{{meeting.diaSemana}} | {{meeting.dia}} DE {{meeting.mes}}
 								</div>
 							</div>
 						</div>
@@ -72,24 +72,24 @@
 						Próximas
 					</h3>
 					<div class="meetings-swiper">
-						<div class="meetings-swiper-card">
+						<div class="meetings-swiper-card" v-for="(meeting, id) in nextmeetings">
 							<div class="meetings-swiper-card__img">
-								<img class="local" src="dist/img/rio.png" alt="Rio de Janeiro">
+								<img class="local" src="dist/img/es.jpg" alt="Espirito Santo">
 								<img class="over" src="dist/img/shadow.png" alt="Imagem de sobreposição">
 								<img class="wave" src="dist/img/wave.png" alt="Ondas">
-								<div class="cancel">
+								<div class="cancel" @click="excluir(id)">
 									Cancelar
 								</div>
 							</div>
 							<div class="meetings-swiper-card__info">
 								<div class="hour">
-									10:30
+									{{meeting.horaInicio}} - {{meeting.horaFim}}
 								</div>
 								<div class="room">
-									Sala 01
+									Sala {{meeting.sala}}
 								</div>
 								<div class="day">
-									SEGUNDA-FEIRA | 28 DE JULHO
+									{{meeting.diaSemana}} | {{meeting.dia}} DE {{meeting.mes}}
 								</div>
 							</div>
 						</div>
@@ -103,26 +103,31 @@
 						</h3>
 						<div class="new-form">
 							<div class="new-form__text">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" v-model="meeting.room_id" @focus="clearErrors" required>
 								<label>Sala</label>
+								<span v-if="meetingErrors.room_id != ''" class="error"> <i class="fas fa-times"></i> {{meetingErrors.room_id}} </span>
 							</div>
 							<div class="new-form__text">
-								<input type="email" class="form-control">
+								<input type="email" class="form-control" v-model="meeting.email" @focus="clearErrors" required>
 								<label>Email</label>
+								<span v-if="meetingErrors.email != ''" class="error"> <i class="fas fa-times"></i> {{meetingErrors.email}} </span>
 							</div>
 							<div class='new-form__date'>
-			                    <input type='datetime-local' class="form-control">
+			                    <input type='datetime-local' class="form-control" :min="todayDate.replace(' ', 'T')" v-model="meeting.start_at" @focus="clearErrors" required>
 			                    <label>Data de Início</label>
+			                    <span v-if="meetingErrors.start_at != ''" class="error"> <i class="fas fa-times"></i> {{meetingErrors.start_at}} </span>
 			                </div>
 			                <div class='new-form__date'>
-			                    <input type='datetime-local' class="form-control">
+			                    <input type='datetime-local' class="form-control" :min="todayDate.replace(' ', 'T')" v-model="meeting.finished_at" @focus="clearErrors" required>
 			                    <label>Data de Encerramento</label>
+			                    <span v-if="meetingErrors.finished_at != ''" class="error"> <i class="fas fa-times"></i> {{meetingErrors.finished_at}} </span>
 			                </div>
 			                <div class="new-form__text">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" v-model="meeting.description" @focus="clearErrors" required>
 								<label>Descrição</label>
+								<span v-if="meetingErrors.description != ''" class="error"> <i class="fas fa-times"></i> {{meetingErrors.description}} </span>
 							</div>
-							<button class="btn btn-primary">Enviar</button>
+							<input type="submit" class="btn btn-primary" @click.prevent="salvar" placeholder="Enviar">
 						</div>
 					</div>
 				</div>
@@ -144,6 +149,6 @@
 		<!-- Script Project -->
 		<script src="dist/js/alldep.min.js" crossorigin="anonymous"></script>
 		<script src="dist/js/scripts.js" crossorigin="anonymous"></script>
-		<script src="dist/js/vue.js" crossorigin="anonymous"></script>
+		<script src="vue.js" crossorigin="anonymous"></script>
 	</body>
 </html>

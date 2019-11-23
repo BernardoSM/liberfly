@@ -8,6 +8,7 @@ Vue.use({
 
     Vue.prototype.$http.interceptors.request.use(config => {
       console.log(config.method)
+	  console.log(config)
       return config
     })
   }
@@ -68,14 +69,16 @@ new Vue({
 
           //Comparando se a reunião é hoje ou se foi cancelada
           if(d1[0] == d2[0] && val.situation != 'cancelado'){
-            this.meetings.push({"horaInicio": horaInicio,
+            this.meetings.push({"id": val.id,
+								"horaInicio": horaInicio,
                                 "horaFim": horaFim,
                                 "dia": dia,
                                 "mes": mes,
                                 "diaSemana": diaSemana,
                                 "sala": val.room_id})
           }else if(Date.parse(d1[0]) > Date.parse(d2[0])){
-            this.nextmeetings.push({"horaInicio" : horaInicio,
+            this.nextmeetings.push({"id": val.id,
+								"horaInicio" : horaInicio,
                                 "horaFim": horaFim,
                                 "dia": dia,
                                 "mes": mes,
@@ -97,7 +100,8 @@ new Vue({
         this.meeting.situation = ''
       },
       excluir(id){
-        this.$http.put('/meetings/${id}', "{situation: 'cancelado'}").then(() => this.limpar())
+		console.log(id)
+        this.$http.put(`/meetings/${id}`, {}, {params: {situation: "cancelado"}})
       },
       salvar() {
         console.log(this.todayDate)
@@ -107,8 +111,10 @@ new Vue({
         if(bool){
           this.meeting.start_at = this.meeting.start_at.replace("T", " ") + ':00'
           this.meeting.finished_at = this.meeting.finished_at.replace("T", " ") + ':00'
+		  
+		  console.log(this.meeting)
 
-          this.$http.post('meetings', this.meeting).then(() => this.limpar())
+          this.$http.post('meetings/', this.meeting, {headers: { "Content-Type": "text/plain;charset-utf-8" } }).then(() => this.limpar())
         }
         
       },
